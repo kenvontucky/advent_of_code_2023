@@ -34,8 +34,27 @@ def game_check(game):
             elif color == "blue":
                 blue_amount += int(amount)
 
-    if red_amount > 12 or green_amount > 13 or blue_amount > 14:
+    if red_amount >= 12 or green_amount >= 13 or blue_amount >= 14:
         return False
+    return True
+
+
+def game_check_alt(game):
+    cube_set = game.split(":")[1].split(";")
+
+    for entry in cube_set:
+        draft = entry.split(", ")
+        for cube in draft:
+            cube_detail = cube.split(" ")
+            color = cube_detail[1]
+            amount = cube_detail[0]
+
+            if color == "red" and int(amount) > 12:
+                return False
+            elif color == "green" and int(amount) > 13:
+                return False
+            elif color == "blue" and int(amount) > 14:
+                return False
     return True
 
 
@@ -43,7 +62,7 @@ def core(data):
     possible_games = []
     for game in data:
         number = game_number(game)
-        if game_check(game):
+        if game_check_alt(game):
             possible_games.append(int(number))
     return possible_games
 
