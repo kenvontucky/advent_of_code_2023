@@ -12,30 +12,30 @@ def game_number(game):
     return game.split(":")[0].split(" ")[1]
 
 
-def game_check(game):
+def game_power_of_set(game):
     cube_set = game.split(":")[1].split(";")
+
+    cube_ref = {"red": 0, "green": 0, "blue": 0}
 
     for entry in cube_set:
         draft = entry.split(", ")
         for cube in draft:
             amount, color = cube.split()
 
-            if color == "red" and int(amount) > 12:
-                return False
-            elif color == "green" and int(amount) > 13:
-                return False
-            elif color == "blue" and int(amount) > 14:
-                return False
-    return True
+            if color == "red":
+                cube_ref["red"] = max(int(amount), cube_ref["red"])
+            elif color == "green":
+                cube_ref["green"] = max(int(amount), cube_ref["green"])
+            elif color == "blue":
+                cube_ref["blue"] = max(int(amount), cube_ref["blue"])
+    return cube_ref["red"] * cube_ref["green"] * cube_ref["blue"]
 
 
 def core(data):
-    possible_games = []
+    r = []
     for game in data:
-        number = game_number(game)
-        if game_check(game):
-            possible_games.append(int(number))
-    return possible_games
+        r.append(game_power_of_set(game))
+    return r
 
 
 def save_output(data):
