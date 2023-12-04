@@ -16,38 +16,10 @@ def game_number(game):
 def game_check(game):
     cube_set = game.split(":")[1].split(";")
 
-    red_amount = 0
-    green_amount = 0
-    blue_amount = 0
-
     for entry in cube_set:
         draft = entry.split(", ")
         for cube in draft:
-            cube_detail = cube.split(" ")
-            color = cube_detail[1]
-            amount = cube_detail[0]
-
-            if color == "red":
-                red_amount += int(amount)
-            elif color == "green":
-                green_amount += int(amount)
-            elif color == "blue":
-                blue_amount += int(amount)
-
-    if red_amount >= 12 or green_amount >= 13 or blue_amount >= 14:
-        return False
-    return True
-
-
-def game_check_alt(game):
-    cube_set = game.split(":")[1].split(";")
-
-    for entry in cube_set:
-        draft = entry.split(", ")
-        for cube in draft:
-            cube_detail = cube.split(" ")
-            color = cube_detail[1]
-            amount = cube_detail[0]
+            amount, color = cube.split()
 
             if color == "red" and int(amount) > 12:
                 return False
@@ -62,7 +34,7 @@ def core(data):
     possible_games = []
     for game in data:
         number = game_number(game)
-        if game_check_alt(game):
+        if game_check(game):
             possible_games.append(int(number))
     return possible_games
 
