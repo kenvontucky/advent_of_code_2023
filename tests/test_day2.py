@@ -1,4 +1,4 @@
-from advent_of_code_2023.day2 import core, calculate_output
+from advent_of_code_2023.day2_1 import core, calculate_output
 
 data = [
     "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
