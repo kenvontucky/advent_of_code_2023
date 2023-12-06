@@ -92,6 +92,17 @@ def test_top_top_right():
     assert sum(possible_games) == 66
 
 
+def test_diag():
+    data = [
+        ".1.2.",
+        "..%..",
+        ".3.4.",
+    ]
+    possible_games = core(data)
+
+    assert sum(possible_games) == 10
+
+
 def test_complete():
     data = [
         ".45.",

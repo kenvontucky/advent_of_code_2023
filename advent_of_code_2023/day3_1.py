@@ -31,9 +31,9 @@ def right(row, index, data):
 
 def right_bottom(row, index, data):
     if row < (len(data) - 1) and index < len(data[0]) - 1:
-        c = data[row][index]
-        l = data[row][:index].split(".")[-1]
-        r = data[row][index:].split(".")[0]
+        c = data[row + 1][index + 1]
+        l = data[row + 1][: index + 1].split(".")[-1]
+        r = data[row + 1][index + 1 :].split(".")[0]
         return l + r
 
 
@@ -47,9 +47,9 @@ def bottom(row, index, data):
 
 def bottom_left(row, index, data):
     if row < (len(data) - 1) and index > 0:
-        c = data[row][index]
-        l = data[row][:index].split(".")[-1]
-        r = data[row][index:].split(".")[0]
+        c = data[row + 1][index - 1]
+        l = data[row + 1][: index - 1].split(".")[-1]
+        r = data[row + 1][index - 1 :].split(".")[0]
         return l + r
 
 
