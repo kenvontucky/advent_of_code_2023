@@ -41,6 +41,17 @@ def test_bottom_right_single():
     assert sum(possible_games) == 1
 
 
+def test_bottom_right_eol():
+    data = [
+        ".....\n",
+        ".$939\n",
+        ".....\n",
+    ]
+    possible_games = core(data)
+
+    assert sum(possible_games) == 939
+
+
 def test_bottom_left():
     data = [
         "....",
@@ -61,7 +72,7 @@ def test_bottom_right():
     assert sum(possible_games) == 21
 
 
-def test_top_left():
+def test_left():
     data = [
         "21$.",
         "....",
