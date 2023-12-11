@@ -28,7 +28,7 @@ def trebuchet(data):
 
 
 def save_output(data):
-    with open("day_one_output.txt", "w") as writer:
+    with open("output/1_1.txt", "w") as writer:
         for item in data:
             writer.write(f"{item}\n")
 
