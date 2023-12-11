@@ -35,11 +35,7 @@ def right(row, index, data):
 
 
 def right_bottom(row, index, data):
-    if (
-        row < (len(data) - 1)
-        and index < len(data[0]) - 1
-        and data[row + 1][index + 1].isnumeric()
-    ):
+    if row < (len(data) - 1) and index < len(data[0]) - 1 and data[row + 1][index + 1].isnumeric():
         l = data[row + 1][: index + 1].split(".")[-1].strip()
         r = data[row + 1][index + 1 :].split(".")[0].strip()
         return l + r
@@ -69,10 +65,10 @@ def core(data):
     row = 0
     for entry in data:
         entry = entry.strip()
-        top_layer = []
-        middle_layer = []
-        lower_layer = []
         for index, value in enumerate(entry):
+            top_layer = []
+            middle_layer = []
+            lower_layer = []
             if value.isnumeric() or value == ".":
                 continue
 
@@ -101,14 +97,14 @@ def core(data):
                 lower_layer.append(int(number))
 
             number = bottom(row, index, data)
-            if number is not None:
+            if number is not None and number.isnumeric():
                 lower_layer.append(int(number))
 
             number = bottom_left(row, index, data)
-            if number is not None:
+            if number is not None and number.isnumeric():
                 lower_layer.append(int(number))
 
-        r = r + list(set(top_layer)) + list(set(middle_layer)) + list(set(lower_layer))
+            r = r + list(set(top_layer)) + list(set(middle_layer)) + list(set(lower_layer))
         row += 1
     return r
 
