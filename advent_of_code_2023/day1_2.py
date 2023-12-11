@@ -67,7 +67,7 @@ def trebuchet(data):
 
 
 def save_output(data):
-    with open("output/day_one_two.txt", "w") as writer:
+    with open("output/1_2.txt", "w") as writer:
         for item in data:
             writer.write(f"{item}\n")
 

@@ -39,7 +39,7 @@ def core(data):
 
 
 def save_output(data):
-    with open("output/day_two.txt", "w") as writer:
+    with open("output/2_2.txt", "w") as writer:
         for item in data:
             writer.write(f"{item}\n")
 
