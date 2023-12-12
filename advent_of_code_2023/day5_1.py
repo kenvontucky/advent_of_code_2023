@@ -72,22 +72,24 @@ def core(data):
             d = line.split()
             soil_tmp = list(range(int(d[1]), int(d[1]) + int(d[2])))
             fert_tmp = [int(d[0]) + x for x in range(len(soil_tmp))]
-            for index, seed in enumerate(soil_tmp):
-                if not almanac.get(seed):
-                    almanac.update(
-                        {
-                            seed: {
-                                "soil": None,
-                                "fertilizer": None,
-                                "water": None,
-                                "light": None,
-                                "temperature": None,
-                                "humidity": None,
-                                "location": None,
+            for index, soil in enumerate(soil_tmp):
+                seeds = list(filter(lambda x: almanac[x]["soil"] == soil, almanac))
+                for seed in seeds:
+                    if not almanac.get(seed):
+                        almanac.update(
+                            {
+                                seed: {
+                                    "soil": None,
+                                    "fertilizer": None,
+                                    "water": None,
+                                    "light": None,
+                                    "temperature": None,
+                                    "humidity": None,
+                                    "location": None,
+                                }
                             }
-                        }
-                    )
-                almanac[seed].update({"soil": fert_tmp[index]})
+                        )
+                    almanac[seed].update({"fertilizer": fert_tmp[index]})
         else:
             stfm = False
 
