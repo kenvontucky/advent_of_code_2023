@@ -8,6 +8,7 @@ packages = [{include = "advent_of_code_2023"}]
 
 [tool.poetry.dependencies]
 python = "3.11.6"
+pandas = "^2.1.4"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.11.0"
